@@ -9,12 +9,10 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            cd Docker
             make install
       - run:
           name: run lint
           command: |
-            cd Docker
             make lint
   push-docker:
     docker:
@@ -26,7 +24,6 @@ jobs:
       - run:
           name: Build image
           command: |
-            cd Docker
             export DOCKER_PATH=$D_USER
             export DOCKER_PASS=$D_PWD
 
