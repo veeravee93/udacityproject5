@@ -85,7 +85,7 @@ jobs:
             kubectl get nodes
 
             echo "----------Deploy an App from Dockerhub to the Kubernetes Cluster----------"
-            kubectl create deploy eksctl-capstone --image=${DOCKER_PATH}/capstone-${CIRCLE_WORKFLOW_ID:0:7}
+            kubectl create deploy eksctl-capstone --image=veeravee93/capstone-${CIRCLE_WORKFLOW_ID:0:7}
 
             echo "----------Waiting until cluster is deployed successfully----------"
             kubectl wait deployment eksctl-capstone --timeout=120s --for condition=Available=True
