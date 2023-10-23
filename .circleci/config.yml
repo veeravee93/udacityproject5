@@ -101,7 +101,7 @@ jobs:
             
             echo ""----------Expose a Kubernetes deployment as a service with a load balancer----------""
             kubectl expose deployment eksctl-capstone --port=8080 --target-port=80 --name=eksctl-espeon --type=LoadBalancer
-            echo "----------See the status----------"
+            echo "----------See status----------"
             kubectl get deploy,rs,svc,pods
 workflows:
   default:
