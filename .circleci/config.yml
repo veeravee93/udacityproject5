@@ -41,10 +41,10 @@ jobs:
             docker login -u ${DOCKER_PATH} -p ${DOCKER_PASS}
 
             # Create tag
-            docker tag capstone-${CIRCLE_WORKFLOW_ID:0:7}: capstone veeravee93/capstone
+            docker tag capstone-${CIRCLE_WORKFLOW_ID:0:7} veeravee93/capstone-${CIRCLE_WORKFLOW_ID:0:7}
 
             # Push image to a docker repository
-            docker push veeravee93/capstone
+            docker push veeravee93/capstone-${CIRCLE_WORKFLOW_ID:0:7}
   deploy:
     docker:
       - image: amazon/aws-cli
