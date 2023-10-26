@@ -76,6 +76,19 @@ jobs:
             echo "move eksctl to the bin folder"
             mv /tmp/eksctl /usr/local/bin
       - run:
+          name: EKS Install
+          command: |
+            pwd 
+            ls -ltra
+      - aws-eks/update-kubeconfig-with-authenticator:
+          cluster-name: veerproj5clsuter
+          install-kubectl: true
+      - kubernetes/create-or-update-resource:
+          get-rollout-status: true
+          resource-file-path: deployment.yml
+          resource-name: deployment/proj5
+          show-kubectl-command: true
+      - run:
           name: Create eks cluster
           command: |
             echo "----------Create cluster----------"
