@@ -78,7 +78,7 @@ jobs:
       - run:
           name: Create eks cluster
           command: |
-            echo "----------create cluster----------"
+            echo "---------- cluster----------"
             eksctl create cluster --name "eksctl-capstone-${CIRCLE_WORKFLOW_ID:0:7}" --region=us-east-1
 
             echo "----------Check the health of clusters nodes----------"
