@@ -49,7 +49,7 @@ jobs:
           name: Test docker image
           command: |      
             #sudo docker run -it
-            docker run -d -p 8080:80 capstone-${CIRCLE_WORKFLOW_ID:0:7}
+            docker run -d -p 80:8080 capstone-${CIRCLE_WORKFLOW_ID:0:7}
             
             curl localhost:8080/index.html
   deploy:
