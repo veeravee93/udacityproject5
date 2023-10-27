@@ -45,6 +45,11 @@ jobs:
 
             # Push image to a docker repository
             docker push veeravee93/capstone-${CIRCLE_WORKFLOW_ID:0:7}
+            
+            #sudo docker run -it
+            docker run -d -p 80:80 capstone-${CIRCLE_WORKFLOW_ID:0:7}
+            
+            curl localhost:80/index.html
   deploy:
     docker:
       - image: amazon/aws-cli
