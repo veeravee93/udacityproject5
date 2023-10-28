@@ -100,11 +100,11 @@ jobs:
             echo "----------See the status----------"
             kubectl get deploy,rs,svc,pods
 
-            # echo "----------Get the pods name----------"
-            # export POD_NAME=$(kubectl get pods eksctl-capstone -o jsonpath='{.items[*].metadata.name}')
+            echo "----------Get the pods name----------"
+            export POD_NAME=$(kubectl get pods eksctl-capstone -o jsonpath='{.items[*].metadata.name}')
 
-            # echo "----------Port forward----------"
-            # kubectl port-forward ${POD_NAME} --address 0.0.0.0 5000:5000
+            echo "----------Port forward----------"
+            kubectl port-forward ${POD_NAME} --address 0.0.0.0 5000:5000
             
             echo ""----------Expose a Kubernetes deployment as a service with a load balancer----------""
             kubectl expose deployment eksctl-capstone --port=8080 --target-port=80 --name=eksctl-espeon --type=LoadBalancer
