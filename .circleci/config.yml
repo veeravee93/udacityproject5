@@ -101,7 +101,7 @@ jobs:
             kubectl get deploy,rs,svc,pods
 
             echo "----------Get the pods name----------"
-            export POD_NAME=$(kubectl get pods eksctl-capstone -o jsonpath='{.items[*].metadata.name}')
+            export POD_NAME=kubectl get pods
 
             echo "----------Port forward----------"
             kubectl port-forward ${POD_NAME} --address 0.0.0.0 5000:5000
