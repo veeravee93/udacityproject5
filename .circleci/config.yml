@@ -97,18 +97,13 @@ jobs:
             echo "----------Waiting until cluster is deployed successfully----------"
             kubectl wait deployment eksctl-capstone --timeout=120s --for condition=Available=True
 
-            echo "----------See the status----------"
+            echo "----------Checking status of sources----------"
             kubectl get deploy,rs,svc,pods
 
-            #echo "----------Get the pods name----------"
-            #export POD_NAME=kubectl get pods
-
-            #echo "----------Port forward----------"
-            #kubectl port-forward ${POD_NAME} --address 0.0.0.0 5000:5000
             
             echo ""----------Expose a Kubernetes deployment as a service with a load balancer----------""
             kubectl expose deployment eksctl-capstone --port=8080 --target-port=80 --name=eksctl-espeon --type=LoadBalancer
-            echo "----------See the status----------"
+            echo "----------Check the status----------"
             kubectl get deploy,rs,svc,pods
             echo "--Test--"
             curl http://localhost:8080/
