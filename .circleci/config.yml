@@ -86,7 +86,7 @@ jobs:
           name: Create eks cluster
           command: |
             echo "----------Create cluster----------"
-            eksctl create cluster --name "eksctl-capstone-${CIRCLE_WORKFLOW_ID:0:7}" --region=us-east-1
+            eksctl create cluster --name "eksctl-capstone" --region=us-east-2
 
             echo "----------Check the health of clusters nodes----------"
             kubectl get nodes
@@ -110,6 +110,8 @@ jobs:
             kubectl expose deployment eksctl-capstone --port=8080 --target-port=80 --name=eksctl-espeon --type=LoadBalancer
             echo "----------See status----------"
             kubectl get deploy,rs,svc,pods
+            echo "--Test--"
+            curl http://localhost:8080/
 workflows:
   default:
     jobs:
